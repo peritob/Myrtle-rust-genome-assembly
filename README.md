@@ -12,7 +12,3 @@ Steps involved in long read genome assembly process
 5. Hi-C scaffolding
 
 6. Genome annotation
-
-7. Effector analysis
-
-8. SNP analysis from different strains
