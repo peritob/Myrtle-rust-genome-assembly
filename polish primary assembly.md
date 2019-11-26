@@ -1,4 +1,4 @@
-Polish the MR_P.fasta
+Polish the APSI_primary.fasta
 ---------------------
 
 Map all the fastq raw reads to the primary contig assembly and get bam file (took 4cpu, 23 hours and 82 GB RAM - next time use fasta raw reads rather than fastq - minimap2 prefers)
@@ -8,21 +8,21 @@ Map all the fastq raw reads to the primary contig assembly and get bam file (too
 module load minimap2/2.3
 module load samtools/1.9
 
-minimap2 -ax map-pb MR_P.fasta *.fastq \
+minimap2 -ax map-pb APSI_primary.fasta *.fastq \
 | samtools view -hF 256 - \
-| samtools sort -@ 8 -m 1G -o MR_P_aligned.bam -T tmp.ali
-| samtools index -b -@ 4 MR_P_aligned.bam
+| samtools sort -@ 8 -m 1G -o APSI_primary_aligned.bam -T tmp.ali
+| samtools index -b -@ 4 APSI_primary_aligned.bam
 ```
 
-Convert the MR_P_aligned.bam to PacBio formatted bam. First make dataset from all subreads.bam.
+Convert the APSI_primary_aligned.bam to PacBio formatted bam. First make dataset from all subreads.bam.
 
 ```
 module load smrttools-release_5.0.1.9578
-dataset create ./MR_dataset.xml ./*subreads.bam
+dataset create ./APSI_dataset.xml ./*subreads.bam
 ```
 ```
 module load pbbam/0.13.2
-pbbamify --input=MR_P_aligned.bam --output=MR_P_aligned.pb.bam --verbose-level=1000000 MR_P.fasta MR_dataset.xml
+pbbamify --input=APSI_primary_aligned.bam --output=APSI_primary_aligned.pb.bam --verbose-level=1000000 APSI_primary.fasta APSI_dataset.xml
 ```
 (took 103 hours walltime, 60GB RAM - could not find way to thread therefore used less than 1 cpu - *strangely the original aligned.bam file was 35G while the aligned.pb.bam was 351G)*
 
@@ -30,7 +30,7 @@ Need the aligned.pb.bam to be sorted and indexed.
 
 ```
 module load samtools/1.9 
-samtools sort -@4 MR_P_aligned.pb.bam -o MR_P_alignedSort.pb.bam
+samtools sort -@4 APSI_primary_aligned.pb.bam -o APSI_primary_alignedSort.pb.bam
 ```
 (took 11 hours walltime, 60 GB RAM and 1 cpu)
 
@@ -38,7 +38,7 @@ Polish with arrow algorithm. Then repeat previous mapping step with polished fas
 
 ```
 module load anaconda2/5.0.1
-arrow MR_P_alignedSort.pb.bam -r MR_P.fasta -j 24 -o MR_P1.gff -o MR_P1.fasta -o MR_P1.fastq
+arrow APSI_primary_alignedSort.pb.bam -r APSI_primary.fasta -j 24 -o APSI_primary_1.gff -o APSI_primary_1.fasta -o APSI_primary_1.fastq
 ```
 (took 96 hours walltime, 100 GB RAM and 24 cpu)
 (second polish took 97 hours walltime, 100 GB RAM and 24 cpu -o MR_P2.fasta)
