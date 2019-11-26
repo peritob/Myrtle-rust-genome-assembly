@@ -11,7 +11,7 @@ Run the (18875) primary and (15,684) secondary braker2 peptides through interpro
 module load interproscan/5.34-73.0
 module load java/jdk1.8.0_111
 
-interproscan.sh -i MR_P.v20190821_aa.fasta -f tsv,gff3
+interproscan.sh -i APSI_primary.aa.fasta -f tsv,gff3
 ```
 
 Run the (18875) primary and (15,684) secondary braker2 predicted amino acid fasta through SignalP 
@@ -21,7 +21,7 @@ Run the (18875) primary and (15,684) secondary braker2 predicted amino acid fast
 module load signalp/4.1f
 module load python/2.7.9
 
-signalp -m MR_P.mature -t euk MR_P.v20190821_aa.fasta
+signalp -m APSI_primary.mature -t euk APSI_primary.aa.fasta
 ```
 1157 and 925 predicted secreted proteins with  signal peptide and no TM. 
 
@@ -31,7 +31,7 @@ Run the MR_P.mature.aa.fasta (1157) and MR_H.mature.aa.fasta (925) SignalP outpu
 module load effectorp/2.0
 module load python/2.7.9
 
-EffectorP.py -i MR_P.mature.aa.fasta -o MReffectorp.txt -E effectors.fasta -N noneffectors.fasta
+EffectorP.py -i APSI_primary.aa.fasta -o APSI_primary_effectorp.txt -E effectors.fasta -N noneffectors.fasta
 ```
 Number of proteins that were tested: 1157 (925)
 
@@ -42,7 +42,7 @@ Number of predicted effectors: 367 (304)
 module load apoplastp/1.0.1
 module load python/2.7.9
 
-ApoplastP.py -i MR_P.mature.aa.fasta -A apoplastP.fasta -N nonApoplastP.fasta -o MR_apopastP.txt
+ApoplastP.py -i APSI_primary.aa.fasta -A apoplastP.fasta -N nonApoplastP.fasta -o APSI_primary_apoplastP.txt
 ```
 Number of proteins that were tested: 1157 (925)
 
