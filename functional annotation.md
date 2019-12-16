@@ -25,13 +25,13 @@ signalp -m APSI_primary.mature -t euk APSI_primary.aa.fasta
 ```
 1157 and 925 predicted secreted proteins with  signal peptide and no TM. 
 
-Run the MR_P.mature.aa.fasta (1157) and MR_H.mature.aa.fasta (925) SignalP outputs through EffectorP and ApoplastP
+Run the APSI_primary.mature.aa.fasta (1157) and APSI_secondary.mature.aa.fasta (925) SignalP outputs through EffectorP and ApoplastP
 -----------------------------------------------------------------------------------
 ```
 module load effectorp/2.0
 module load python/2.7.9
 
-EffectorP.py -i APSI_primary.aa.fasta -o APSI_primary_effectorp.txt -E effectors.fasta -N noneffectors.fasta
+EffectorP.py -i APSI_primary.mature.aa.fasta -o APSI_primary_effectorp.txt -E effectors.fasta -N noneffectors.fasta
 ```
 Number of proteins that were tested: 1157 (925)
 
