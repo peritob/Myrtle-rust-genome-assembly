@@ -33,21 +33,21 @@ module load python/2.7.9
 
 EffectorP.py -i APSI_primary.mature.aa.fasta -o APSI_primary_effectorp.txt -E effectors.fasta -N noneffectors.fasta
 ```
-Number of proteins that were tested: 1157 (925)
+Number of proteins that were tested: 1157 primary (925 secondary)
 
-Number of predicted effectors: 367 (304)
+Number of predicted effectors: 367 primary (304 secondary)
 
-31.7 (32.9) percent are predicted to be effectors.
+31.7 primary (32.9 secondary) percent are predicted to be effectors.
 ```
 module load apoplastp/1.0.1
 module load python/2.7.9
 
 ApoplastP.py -i APSI_primary.aa.fasta -A apoplastP.fasta -N nonApoplastP.fasta -o APSI_primary_apoplastP.txt
 ```
-Number of proteins that were tested: 1157 (925)
+Number of proteins that were tested: 1157 primary (925 secondary)
 
-Number of predicted apoplastic proteins: 347 (254)
+Number of predicted apoplastic proteins: 347 primary (254 secondary)
 
-32.3 (27.5) percent are predicted to be apoplastic
+32.3 (27.5 secondary) percent are predicted to be apoplastic
 
-Total effectors that are not apoplastic based on apoplastp and effectorp cross-check = 194 (183)
+Total effectors that are not apoplastic based on apoplastp and effectorp cross-check = 194 primary (183 secondary)
