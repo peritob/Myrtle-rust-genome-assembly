@@ -1,5 +1,5 @@
 # myrtle-rust-genome-assembly
-Steps involved in long read genome assembly process
+Steps involved in <i>Austropuccinia psidii</i> pandemic strain long read genome assembly process
 
 1. Preprocessing
 
