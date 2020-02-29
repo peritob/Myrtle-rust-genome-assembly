@@ -9,6 +9,6 @@ Steps involved in <i>Austropuccinia psidii</i> pandemic strain long read genome 
 
 4. Polishing
 
-5. Hi-C scaffolding
+5. Hi-C scaffolding - pipeline not presented here
 
 6. Genome annotation
